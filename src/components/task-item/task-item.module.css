@@ -1,0 +1,118 @@
+.task {
+  display: flex;
+  flex-direction: column;
+  /*position: relative;*/
+  box-sizing: border-box;
+  margin: 0 0 15px 0;
+  padding: 0;
+  list-style: none;
+  cursor: move;
+}
+
+.task:last-of-type {
+   margin-bottom: 0;
+}
+
+.task_is-dragging {
+  opacity: 0;
+}
+
+
+.task__item-wrap {
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+.task__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 10px 110px 10px 20px;
+  width: 100%;
+  border-radius: 30px;
+  box-shadow: 5px 5px 5px #abb1c1;
+  overflow-y: auto;
+}
+
+.task__item_is-done {
+  box-shadow: inset 3px 3px 5px #abb1c1;
+}
+
+.task__text {
+  margin: 0;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  color: #000;
+  overflow-wrap: break-word;
+}
+
+.task__text_crossed {
+  color: #abb1c1;
+  text-decoration: line-through;
+}
+
+.task__text_heading {
+  font-size: 20px;
+  line-height: 22px;
+}
+
+.task__text_paragraph {
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.task__date {
+  /*display: block;*/
+  align-self: flex-end;
+  margin: 0 15px 5px 0;
+}
+
+.task__buttons-wrap {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transform: translateY(-50%);
+  cursor: initial;
+}
+
+.task__button {
+  all: unset;
+  width: 30px;
+  height: 30px;
+  transition: background-image .2s;
+  cursor: pointer;
+}
+
+.task__button_type_status {
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*.task__button_type_status:hover {*/
+/*  background: url(../../images/star-hover.svg) center center no-repeat;*/
+/*}*/
+
+.task__button_type_edit {
+  background: url(../../images/edit-icon-black.svg) center center / 130% no-repeat;
+}
+
+.task__button_type_edit:hover {
+  background: url(../../images/edit-icon-green.svg) center center / 130% no-repeat;
+}
+
+.task__button_type_delete {
+  background: url(../../images/cross-black.svg) center center no-repeat;
+}
+
+.task__button_type_delete:hover {
+  background: url(../../images/cross-green.svg) center center no-repeat;
+}

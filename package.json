@@ -1,0 +1,40 @@
+{
+  "name": "todo-or-not-todo",
+  "homepage": "https://dariarus.github.io/todo-or-not-todo-v2",
+  "version": "0.1.0",
+  "type": "module",
+  "jsx": "react",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.51",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "mobx": "^6.11.0",
+    "mobx-react": "^9.1.0",
+    "mobx-react-lite": "^4.0.5",
+    "queue-microtask": "^1.2.3",
+    "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "vite": "^4.4.5",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist"
+  }
+}

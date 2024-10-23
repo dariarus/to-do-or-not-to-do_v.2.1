@@ -1,0 +1,55 @@
+.accordion {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*display: none;*/
+  border: none;
+  border-radius: 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.accordion_is-active {
+  /*display: block;*/
+  margin-bottom: 20px;
+  padding: 10px;
+  max-height: 154px;
+  border: 1px solid rgba(171, 177, 193, .5);
+}
+
+.accordion__text {
+  margin: 0;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.accordion__text_heading {
+  margin-bottom: 10px;
+  font-size: 22px;
+  line-height: 24px;
+  text-align: center;
+  color: #00996f;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.legend {
+  margin-bottom: 10px;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000;
+}

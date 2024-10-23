@@ -1,0 +1,114 @@
+.form {
+  display: flex;
+  width: 100%;
+}
+
+/*.form__input-wrap {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  flex-basis: 95%;*/
+/*}*/
+
+/*.text-input {*/
+/*  box-sizing: border-box;*/
+/*  padding: 20px 10px;*/
+/*  width: 100%;*/
+/*  border: none;*/
+/*  border-bottom: 1px solid rgba(171, 177, 193, .5);*/
+/*  outline: none;*/
+/*  font-family: 'Nunito', 'Arial', sans-serif;*/
+/*  font-weight: 300;*/
+/*  font-size: 18px;*/
+/*  line-height: 20px;*/
+/*  color: #000;*/
+/*}*/
+
+/*.text-input::placeholder {*/
+/*  font-size: 16px;*/
+/*  line-height: 18px;*/
+/*  color: #848484;*/
+/*}*/
+
+/*.text-area {*/
+/*  box-sizing: border-box;*/
+/*  padding: 20px 10px;*/
+/*  width: 100%;*/
+/*  min-height: 3em;*/
+/*  border: none;*/
+/*  outline: none;*/
+/*  background-color: transparent;*/
+/*  resize: none;*/
+/*  font-family: 'Nunito', 'Arial', sans-serif;*/
+/*  font-weight: 300;*/
+/*  font-size: 18px;*/
+/*  line-height: 20px;*/
+/*  color: #000;*/
+/*  scrollbar-color: #abb1c1 rgba(171, 177, 193, .5); !* «цвет ползунка» «цвет полосы скроллбара» *!*/
+/*  scrollbar-width: thin;*/
+/*}*/
+
+/*.text-input:focus,*/
+/*.text-area:focus {*/
+/*  background: linear-gradient(-.9turn, rgba(0, 153, 111, .1), #fff);*/
+/*}*/
+
+/*.text-area::placeholder {*/
+/*  font-size: 16px;*/
+/*  line-height: 18px;*/
+/*  color: #848484;*/
+/*}*/
+
+/*.text-area::-webkit-scrollbar {*/
+/*  width: 6px;*/
+/*  height: 0;*/
+/*  border: 1px solid rgba(171, 177, 193, .5);*/
+/*  border-radius: 30px;*/
+/*}*/
+
+/*.textarea::-webkit-scrollbar-track {*/
+/*  height: 30px;*/
+/*}*/
+
+/*.textarea::-webkit-scrollbar-track-piece {*/
+/*  height: 30px;*/
+/*}*/
+
+/*!* ползунок скроллбара *!*/
+/*.text-area::-webkit-scrollbar-thumb {*/
+/*  background-color: rgba(171, 177, 193, .9);*/
+/*  border-radius: 50px;*/
+/*}*/
+
+.button {
+  all: unset;
+  box-sizing: border-box;
+  border: 1px solid rgba(171, 177, 193, .9);
+  border-right: none;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  padding: 10px;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000;
+  text-align: center;
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+
+.button:hover:enabled {
+  color: #00996f;
+  border-color: #00996f;
+}
+
+.button:disabled {
+  color: rgba(171, 177, 193, .5);
+  cursor: unset;
+}
+
+.button:active,
+.button:focus {
+
+}

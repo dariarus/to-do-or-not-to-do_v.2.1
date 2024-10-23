@@ -1,0 +1,124 @@
+.input-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 95%;
+}
+
+.text-input {
+  box-sizing: border-box;
+  padding: 20px 30px 20px 10px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(171, 177, 193, .5);
+  outline: none;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000;
+}
+
+.text-input::placeholder {
+  font-size: 16px;
+  line-height: 18px;
+  color: #848484;
+}
+
+.checkbox {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  /* скрыть дефолтный чекбокс */
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  transition: 0.25s ease;
+}
+
+.checkbox:not(:disabled) {
+  cursor: pointer;
+}
+
+.checkbox:not(:checked) {
+  background: url(../../images/star-default.svg) center center no-repeat;
+}
+
+.checkbox:checked {
+  background: url(../../images/star-checked.svg) center center no-repeat;
+}
+
+.checkbox:disabled {
+  background: url(../../images/star-disabled.svg) center center no-repeat;
+}
+
+.text-area {
+  box-sizing: border-box;
+  padding: 20px 10px;
+  width: 100%;
+  min-height: 3em;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000;
+  scrollbar-color: #abb1c1 rgba(171, 177, 193, .5); /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-width: thin;
+}
+
+.text-input:focus,
+.text-area:focus {
+  background: linear-gradient(-.9turn, rgba(0, 153, 111, .1), #fff);
+}
+
+.text-area::placeholder {
+  font-size: 16px;
+  line-height: 18px;
+  color: #848484;
+}
+
+.text-area::-webkit-scrollbar {
+  width: 6px;
+  height: 0;
+  border: 1px solid rgba(171, 177, 193, .5);
+  border-radius: 30px;
+}
+
+.textarea::-webkit-scrollbar-track {
+  height: 30px;
+}
+
+.textarea::-webkit-scrollbar-track-piece {
+  height: 30px;
+}
+
+/* ползунок скроллбара */
+.text-area::-webkit-scrollbar-thumb {
+  background-color: rgba(171, 177, 193, .9);
+  border-radius: 50px;
+}
+
+.tooltip {
+  position: absolute;
+  top: 10px;
+  right: 5%;
+  display: none;
+  padding: 10px;
+  border: 1px solid rgba(171, 177, 193, .5);
+  border-radius: 10px;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+  color: #848484;
+}
+
+.checkbox:hover:not(:disabled) + .tooltip {
+  display: inline-block;
+}

@@ -1,0 +1,31 @@
+.checkbox {
+  /* скрыть дефолтный чекбокс */
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0 10px 0 0;
+  width: 40px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.checkbox::before {
+  box-sizing: border-box;
+  display: flex;
+  content: '';
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #abb1c1;
+  border-radius: 50%;
+  transition: box-shadow 0.25s ease;
+}
+
+.checkbox_type_is-done:checked::before {
+  border: 2px solid #00996f;
+  background: url(../../images/tick-green.svg) center center no-repeat;
+}
+
+.checkbox_type_is-important:checked::before {
+  border: 2px solid #f4ad3d;
+  background: url(../../images/tick-yellow.svg) center center no-repeat;
+}

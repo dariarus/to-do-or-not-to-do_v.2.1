@@ -1,0 +1,40 @@
+.input {
+  /* скрыть дефолтный вид радио-кнопки*/
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0 5px 0 30px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.input:first-of-type {
+  margin-left: 0;
+}
+
+.input::before {
+  box-sizing: border-box;
+  display: flex;
+  content: "";
+  background: none;
+  width: 20px;
+  height: 20px;
+}
+
+.input:checked::before {
+  /*background: url(../../images/tick.png) 96% / 5% no-repeat;*/
+  background: url(../../images/tick-green.svg) center no-repeat;
+}
+
+
+.input__label {
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 22px;
+  color: #000;
+  cursor: pointer;
+}
+
+.input:checked + .input__label { /* + выбирает элементы-соседи на том же уровне вложенности */
+  color: #00996f;
+}

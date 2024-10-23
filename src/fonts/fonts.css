@@ -1,0 +1,15 @@
+@font-face {
+  src: url(NunitoSans/NunitoSans_7pt_Condensed-Light.ttf) format('truetype');
+  font-family: 'Nunito';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  src: url(NunitoSans/NunitoSans_7pt_Condensed-SemiBold.ttf) format('truetype');
+  font-family: 'Nunito';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

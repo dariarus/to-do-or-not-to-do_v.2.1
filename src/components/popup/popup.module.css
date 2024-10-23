@@ -1,0 +1,121 @@
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 500px;
+  max-height: 550px;
+  padding: 20px 15px;
+  background-color: #fff;
+  border: 1px solid rgba(171, 177, 193, .5);
+  border-radius: 10px;
+  z-index: 4;
+  transform: translate(-50%, -50%); /* попап любого размера находится ровно посередине */
+}
+
+.popup__cross-icon {
+  all: unset;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  background: url(../../images/cross-black.svg) no-repeat center center;
+  cursor: pointer;
+  transition: background .3s;
+}
+
+.popup__cross-icon:hover {
+  background: url(../../images/cross-green.svg) no-repeat center center;
+}
+
+.popup__text {
+  margin: 0;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-style: normal;
+}
+
+.popup__text_heading {
+  align-self: center;
+  margin-bottom: 10px;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 32px;
+  text-align: center;
+  color: #00996f;
+}
+
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.popup__checkboxes-wrap {
+  display: flex;
+  align-items: center;
+  /*justify-content: space-between;*/
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.popup__checkbox-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.popup__checkbox-label {
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 22px;
+  color: #000;
+  cursor: pointer;
+}
+
+.popup__buttons-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.popup__button {
+  all: unset;
+  padding: 10px;
+  min-width: 100px;
+  border: 2px solid;
+  border-radius: 30px;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.popup__button_type_save {
+  border-color: #00996f;
+  color: #00996f;
+  transition: background-color .3s, color .3s;
+}
+
+.popup__button_type_save:hover {
+  background-color: #00996f;
+  color: #fff;
+}
+
+.popup__button_type_cancel {
+  border-color: #abb1c1;
+  color: #000;
+  transition: background-color .3s;
+}
+
+.popup__button_type_cancel:hover {
+  background-color: #abb1c1;
+}

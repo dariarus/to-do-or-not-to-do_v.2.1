@@ -1,0 +1,59 @@
+.form-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  position: relative;
+  width: 70%;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 0 25px 5px 0;
+  border: none;
+  border-bottom: 1px solid rgba(171, 177, 193, .5);
+  background: url(../../images/loupe-thin.svg) center right no-repeat;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 22px;
+  color: #000;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom: 1px solid #abb1c1;
+  background: url(../../images/loupe-bold.svg) center right no-repeat;
+}
+
+.input::placeholder {
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+  color: #848484;
+}
+
+.input_not-empty,
+.input_not-empty:focus {
+  background: none;
+}
+
+.reset-button {
+  all: unset;
+  position: absolute;
+  top: 10%;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background: url(../../images/cross-black.svg) center center no-repeat;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.reset-button:hover {
+  background: url(../../images/cross-green.svg) center center no-repeat;
+}
