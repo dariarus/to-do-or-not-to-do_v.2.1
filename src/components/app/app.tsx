@@ -39,7 +39,6 @@ const App: FunctionComponent = observer(() => {
     updatedShowingArray[dragIndex] = hoverItem;
     updatedShowingArray[hoverIndex] = dragItem;
 
-    // Перемещаем элементы в основном массиве mainStore.tasks.fullTasksArray на основе его индексов
     const updatedTasksArray = [...mainStore.tasks.fullTasksArray];
 
     const dragTask = updatedTasksArray.find(task => task.id === dragItem.id);
