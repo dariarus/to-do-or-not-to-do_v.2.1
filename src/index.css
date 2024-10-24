@@ -8,7 +8,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scrollbar-color: #abb1c1 #abb1c1; /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-color: #abb1c1 #abb1c1;
   scrollbar-width: thin;
 }
 
@@ -19,7 +19,6 @@ body::-webkit-scrollbar {
   border-radius: 30px;
 }
 
-/* ползунок скроллбара */
 body::-webkit-scrollbar-thumb {
   background-color: #abb1c1;
   border-radius: 50px;

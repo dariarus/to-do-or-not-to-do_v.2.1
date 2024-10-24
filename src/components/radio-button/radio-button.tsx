@@ -15,7 +15,7 @@ export const RadioButton: FunctionComponent<TRadioButton> = (props) => {
              className={radioButtonStyles.input}
              onChange={props.onClickRadio}
       />
-      <label htmlFor={props.value} className={radioButtonStyles['input__label']}>{props.label}</label>
+      <label htmlFor={props.value} className={radioButtonStyles.label}>{props.label}</label>
     </>
   )
 }

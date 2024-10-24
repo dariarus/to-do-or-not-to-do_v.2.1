@@ -30,7 +30,6 @@
   position: absolute;
   top: 10%;
   right: 0;
-  /* скрыть дефолтный чекбокс */
   -webkit-appearance: none;
   appearance: none;
   width: 30px;
@@ -68,7 +67,7 @@
   font-size: 18px;
   line-height: 20px;
   color: #000;
-  scrollbar-color: #abb1c1 rgba(171, 177, 193, .5); /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-color: #abb1c1 rgba(171, 177, 193, .5);
   scrollbar-width: thin;
 }
 
@@ -98,7 +97,6 @@
   height: 30px;
 }
 
-/* ползунок скроллбара */
 .text-area::-webkit-scrollbar-thumb {
   background-color: rgba(171, 177, 193, .9);
   border-radius: 50px;

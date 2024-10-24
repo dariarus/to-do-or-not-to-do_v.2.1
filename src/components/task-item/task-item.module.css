@@ -1,7 +1,6 @@
 .task {
   display: flex;
   flex-direction: column;
-  /*position: relative;*/
   box-sizing: border-box;
   margin: 0 0 15px 0;
   padding: 0;
@@ -67,7 +66,6 @@
 }
 
 .task__date {
-  /*display: block;*/
   align-self: flex-end;
   margin: 0 15px 5px 0;
 }
@@ -96,10 +94,6 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-
-/*.task__button_type_status:hover {*/
-/*  background: url(../../images/star-hover.svg) center center no-repeat;*/
-/*}*/
 
 .task__button_type_edit {
   background: url(../../images/edit-icon-black.svg) center center / 130% no-repeat;

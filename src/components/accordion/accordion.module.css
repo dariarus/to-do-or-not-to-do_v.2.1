@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /*display: none;*/
   border: none;
   border-radius: 10px;
   max-height: 0;
@@ -11,7 +10,6 @@
 }
 
 .accordion_is-active {
-  /*display: block;*/
   margin-bottom: 20px;
   padding: 10px;
   max-height: 154px;

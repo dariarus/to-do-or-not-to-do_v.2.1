@@ -24,9 +24,6 @@ const App: FunctionComponent = observer(() => {
   const [accordionIsActive, setAccordionIsActive] = useState<boolean>(false);
 
   const handleOnMoveTask = useCallback((dragIndex: number, hoverIndex: number) => {
-    /* Перемещаем элементы в массиве mainStore.tasks.showingTasksArray, отображаемом в зависимости от выбранной сортировки задач,
-    на основе его индексов */
-
     /* Если модифицировать напрямую mainStore (например, писать mainStore.tasks.showingTasksArray[dragIndex] = hoverItem),
     то возникает предупреждение "[MobX] Since strict-mode is enabled,
     changing (observed) observable values without using an action is not allowed. Tried to modify: Tasks@1.fullTasksArray"
@@ -74,15 +71,6 @@ const App: FunctionComponent = observer(() => {
     <main className={appStyles.main}>
       <h1 className={appStyles['todos-board__heading']}>Мои задачи</h1>
       <div className={appStyles['todos-board']}>
-
-        {/*1). <AddTaskForm onAddTask={mainStore.tasks.addNewTask}/>
-        Не работает, так как прокинута ссылка на ф-цию, без контекста.
-        Т.е. в месте вызова не будет объявлена переменная this.fullTasksArray, и поэтому падает в ошибку this.fullTasksArray - undefined */}
-
-        {/*2). <AddTaskForm onAddTask={(task) => mainStore.tasks.addNewTask(task)}/>*/}
-        {/* Работает, так как прокинут контекст в сам коллбэк (task: TTask) => ...*/}
-
-        {/*3). Но можно вообще без пропсов, а вызвать addTask прямо в месте выполнения. Тогда нет проблем с контекстом*/}
         <AddTaskForm/>
 
         <div className={appStyles['todos-board__tasks-wrap']}>

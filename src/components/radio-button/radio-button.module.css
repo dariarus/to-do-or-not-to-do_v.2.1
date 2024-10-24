@@ -1,5 +1,4 @@
 .input {
-  /* скрыть дефолтный вид радио-кнопки*/
   -webkit-appearance: none;
   appearance: none;
   margin: 0 5px 0 30px;
@@ -21,12 +20,11 @@
 }
 
 .input:checked::before {
-  /*background: url(../../images/tick.png) 96% / 5% no-repeat;*/
   background: url(../../images/tick-green.svg) center no-repeat;
 }
 
 
-.input__label {
+.label {
   font-family: 'Nunito', 'Arial', sans-serif;
   font-weight: 300;
   font-size: 20px;
@@ -35,6 +33,6 @@
   cursor: pointer;
 }
 
-.input:checked + .input__label { /* + выбирает элементы-соседи на том же уровне вложенности */
+.input:checked + .input__label {
   color: #00996f;
 }

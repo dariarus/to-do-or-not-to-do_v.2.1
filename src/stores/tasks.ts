@@ -11,9 +11,6 @@ export class Tasks {
 
   constructor() {
     makeAutoObservable(this);
-    // Меняем массив в localStorage по каждому чиху, происходящему с задачами в this.fullTasksArray
-    // Работает autorun, а не reaction, потому что нужна реакция на изменения в исходном массиве, который не перезаписывается полностью,
-    // а меняются только существующие в нем элементы (задачи)
     autorun(() => {
         localStorage.setItem('tasksArray', JSON.stringify(this.fullTasksArray));
       }

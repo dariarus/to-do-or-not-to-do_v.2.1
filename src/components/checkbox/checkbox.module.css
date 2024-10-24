@@ -1,5 +1,4 @@
 .checkbox {
-  /* скрыть дефолтный чекбокс */
   -webkit-appearance: none;
   appearance: none;
   margin: 0 10px 0 0;

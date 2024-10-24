@@ -5,7 +5,7 @@ import {TSortOptionRadio} from '../../services/types/props';
 
 export const SortingOptionRadio: FunctionComponent<TSortOptionRadio> = (props) => {
   return (
-    <label htmlFor={props.id} className={sortOptionCheckboxStyles.label}>
+    <div className={sortOptionCheckboxStyles['input-wrap']}>
       <input type="radio"
              id={props.id}
              name={props.inputName}
@@ -13,6 +13,7 @@ export const SortingOptionRadio: FunctionComponent<TSortOptionRadio> = (props) =
              className={sortOptionCheckboxStyles.input}
              onChange={props.onClickRadio}
       />
-      {props.label}</label>
+      <label htmlFor={props.id} className={sortOptionCheckboxStyles.label}>{props.label}</label>
+    </div>
   )
 }
