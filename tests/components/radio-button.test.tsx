@@ -31,7 +31,7 @@ describe('Work of RadioButton component', () => {
 
     render(<RadioButton {...props} />);
 
-    const radioButtonInput = screen.getByLabelText('Awesome option');
+    const radioButtonInput = screen.getByLabelText('Awesome option') as HTMLInputElement;
     fireEvent.click(radioButtonInput);
 
     expect(onClickRadio).toHaveBeenCalledTimes(1);
