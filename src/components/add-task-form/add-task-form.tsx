@@ -21,6 +21,17 @@ export const AddTaskForm: FunctionComponent = observer(() => {
     <form className={addTaskFormStyles.form}
           onSubmit={(e: FormEvent<HTMLFormElement>) => {
             e.preventDefault();
+            mainStore.tasks.addNewTask({
+              id: generateUniqueId(),
+              name: inputsValues.textInputValue,
+              description: inputsValues.textAreaValue ? inputsValues.textAreaValue : undefined,
+              isImportant: inputsValues.isImportant,
+              isDone: false,
+              createDate: createDate,
+              closeDate: null
+            });
+            setInputsValues(inputsValuesInitialState);
+            mainStore.tasks.setShowingTasksArray();
           }}
     >
       <TaskInputs
@@ -50,21 +61,6 @@ export const AddTaskForm: FunctionComponent = observer(() => {
       <button type="submit"
               className={addTaskFormStyles.button}
               disabled={inputsValues.textInputValue === ''}
-              onClick={(e: MouseEvent<HTMLButtonElement>) => {
-                e.preventDefault();
-                mainStore.tasks.addNewTask({
-                  id: generateUniqueId(),
-                  name: inputsValues.textInputValue,
-                  description: inputsValues.textAreaValue ? inputsValues.textAreaValue : undefined,
-                  isImportant: inputsValues.isImportant,
-                  isDone: false,
-                  createDate: createDate,
-                  closeDate: null
-                  // closeDate: undefined
-                });
-                setInputsValues(inputsValuesInitialState);
-                mainStore.tasks.setShowingTasksArray();
-              }}
       >
         Добавить<br/>задачу
       </button>
