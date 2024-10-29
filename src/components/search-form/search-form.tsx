@@ -9,7 +9,7 @@ export const SearchForm: FunctionComponent = () => {
 
   return (
     <div className={searchFormStyles['form-wrap']}>
-      <form className={searchFormStyles.form}>
+      <form className={searchFormStyles.form} role="search">
         <input value={inputValue}
                placeholder="Название или описание задачи"
                className={!inputValue
@@ -23,7 +23,7 @@ export const SearchForm: FunctionComponent = () => {
         />
         {
           inputValue &&
-          <button type="button"
+          <button type="reset"
                   className={searchFormStyles['reset-button']}
                   onClick={() => {
                     setInputValue('');
