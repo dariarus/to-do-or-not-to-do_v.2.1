@@ -1,56 +1,29 @@
-import React, {FunctionComponent, useCallback, useEffect, useState} from 'react';
-import {observer} from 'mobx-react-lite';
-import {DndProvider} from 'react-dnd';
-import {HTML5Backend} from 'react-dnd-html5-backend';
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import appStyles from './app.module.css';
 
-import {AddTaskForm} from '../add-task-form/add-task-form';
-import {RadioButton} from '../radio-button/radio-button';
-import {TaskItem} from '../task-item/task-item';
-import {Popup} from '../popup/popup';
-import {SearchForm} from '../search-form/search-form';
-import {Accordion} from '../accordion/accordion';
+import { AddTaskForm } from '../add-task-form/add-task-form';
+import { RadioButton } from '../radio-button/radio-button';
+import { TaskItem } from '../task-item/task-item';
+import { Popup } from '../popup/popup';
+import { SearchForm } from '../search-form/search-form';
+import { Accordion } from '../accordion/accordion';
 
 import mainStore from '../../stores';
 
-import {radioButtonsInitialState} from '../../utils/constants';
-import {loadTasksFromLocalStorage} from '../../utils/functions';
+import { radioButtonsInitialState } from '../../utils/constants';
+import { loadTasksFromLocalStorage } from '../../utils/functions';
 
-import {IRadioButtonsState, TaskCompletion} from '../../services/types/state';
+import { IRadioButtonsState, TaskCompletion } from '../../services/types/state';
+import { TasksList } from "../tasks-list/tasks-list";
 
 const App: FunctionComponent = observer(() => {
   const [filterRadioButtons, setFilterRadioButtons] = useState<IRadioButtonsState>(radioButtonsInitialState);
   const [accordionIsActive, setAccordionIsActive] = useState<boolean>(false);
 
-  const handleOnMoveTask = useCallback((dragIndex: number, hoverIndex: number) => {
-    /* Если модифицировать напрямую mainStore (например, писать mainStore.tasks.showingTasksArray[dragIndex] = hoverItem),
-    то возникает предупреждение "[MobX] Since strict-mode is enabled,
-    changing (observed) observable values without using an action is not allowed. Tried to modify: Tasks@1.fullTasksArray"
-    Поэтому применено копирование состояния и запись обновленного массива обратно в mainStore*/
-    const updatedShowingArray = [...mainStore.tasks.showingTasksArray];
-
-    const dragItem = updatedShowingArray[dragIndex]
-    const hoverItem = updatedShowingArray[hoverIndex]
-
-    updatedShowingArray[dragIndex] = hoverItem;
-    updatedShowingArray[hoverIndex] = dragItem;
-
-    const updatedTasksArray = [...mainStore.tasks.fullTasksArray];
-
-    const dragTask = updatedTasksArray.find(task => task.id === dragItem.id);
-    const hoverTask = updatedTasksArray.find(task => task.id === hoverItem.id);
-
-    if (dragTask && hoverTask) {
-      const dragTaskIndex = updatedTasksArray.indexOf(dragTask);
-      const hoverTaskIndex = updatedTasksArray.indexOf(hoverTask);
-      updatedTasksArray[dragTaskIndex] = hoverItem;
-      updatedTasksArray[hoverTaskIndex] = dragItem;
-    }
-
-    mainStore.tasks.setFullTasksArray(updatedTasksArray);
-    mainStore.tasks.setShowingTasksArray();
-  }, [mainStore.tasks.fullTasksArray, mainStore.tasks.showingTasksArray])
 
   useEffect(() => {
     // Формат Date не парсится из localStorage, поэтому в createDate и closeDate находится текст вместо даты. Надо сериализовать вручную:
@@ -121,31 +94,7 @@ const App: FunctionComponent = observer(() => {
             }
           </div>
           <Accordion isActive={accordionIsActive}/>
-          <div className={appStyles['todos-board__tasks-list-wrap']}>
-            {
-              mainStore.tasks.showingTasksArray && mainStore.tasks.showingTasksArray.length > 0
-                ? <DndProvider backend={HTML5Backend}>
-                  <ul className={appStyles['todos-board__tasks-list']}>
-                    {
-                      mainStore.tasks.showingTasksArray.map((task, index) => (
-                        <TaskItem key={task.id}
-                                  id={task.id}
-                                  index={index}
-                                  name={task.name}
-                                  description={task.description}
-                                  isDone={task.isDone}
-                                  isImportant={task.isImportant}
-                                  createDate={task.createDate}
-                                  closeDate={task.closeDate}
-                                  onMoveTask={handleOnMoveTask}
-                        />
-                      ))
-                    }
-                  </ul>
-                </DndProvider>
-                : <p className={appStyles['stub-text']}>Нет задач</p>
-            }
-          </div>
+          <TasksList/>
         </div>
       </div>
       {

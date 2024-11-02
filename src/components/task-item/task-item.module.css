@@ -70,7 +70,7 @@
   margin: 0 15px 5px 0;
 }
 
-.task__buttons-wrap {
+.task__task-options-wrap {
   position: absolute;
   top: 50%;
   right: 10px;
@@ -89,10 +89,21 @@
   cursor: pointer;
 }
 
-.task__button_type_status {
-  background-size: auto;
-  background-position: center;
-  background-repeat: no-repeat;
+.task__importance-checkbox {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: background-image 0.2s ease;
+}
+
+.task__importance-checkbox:not(:checked) {
+  background: url(../../images/star-default.svg) center center no-repeat;
+}
+
+.task__importance-checkbox:checked {
+  background: url(../../images/star-checked.svg) center center no-repeat;
 }
 
 .task__button_type_edit {

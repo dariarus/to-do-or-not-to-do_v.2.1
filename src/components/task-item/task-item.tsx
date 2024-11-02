@@ -1,17 +1,16 @@
-import React, {FunctionComponent, useCallback, useRef} from 'react';
-import {observer} from 'mobx-react-lite';
-import {DropTargetMonitor, useDrag, useDrop} from 'react-dnd';
-import {Identifier, XYCoord} from 'dnd-core';
+import React, { FunctionComponent, useCallback, useRef } from 'react';
+import { observer } from 'mobx-react-lite';
+import { DropTargetMonitor, useDrag, useDrop } from 'react-dnd';
+import { Identifier, XYCoord } from 'dnd-core';
 
 import taskItemStyles from './task-item.module.css';
-import checkedStar from '../../images/star-checked.svg';
-import defaultStar from '../../images/star-default.svg';
 
-import {Checkbox} from '../checkbox/checkbox';
+import { Checkbox } from '../checkbox/checkbox';
 
 import mainStore from '../../stores';
 
-import {TTaskItem} from '../../services/types/props';
+import { TTaskItem } from '../../services/types/props';
+import { generateUniqueId } from "../../utils/functions";
 
 export const TaskItem: FunctionComponent<TTaskItem> = observer((props) => {
   const ref = useRef<HTMLLIElement>(null);
@@ -63,6 +62,8 @@ export const TaskItem: FunctionComponent<TTaskItem> = observer((props) => {
 
   dragRef(dropRef(ref));
 
+  const checkboxUniqueId = generateUniqueId();
+
   const handleOnChangeIsDone = useCallback(() => {
     mainStore.tasks.changeTaskIsDone(props.id);
   }, [props.isDone])
@@ -70,6 +71,7 @@ export const TaskItem: FunctionComponent<TTaskItem> = observer((props) => {
   return (
     <li ref={ref}
         data-handler-id={handlerId}
+        data-testid="task-item"
         className={isDragging ? `${taskItemStyles.task} ${taskItemStyles['task_is-dragging']}` : `${taskItemStyles.task}`}>
       {
         props.isDone && props.closeDate
@@ -87,6 +89,7 @@ export const TaskItem: FunctionComponent<TTaskItem> = observer((props) => {
       }
       <div className={taskItemStyles['task__item-wrap']}>
         <Checkbox
+          key={generateUniqueId()}
           type="isDone"
           checked={props.isDone}
           onChange={handleOnChangeIsDone}/>
@@ -116,25 +119,24 @@ export const TaskItem: FunctionComponent<TTaskItem> = observer((props) => {
               }
             </div>
         }
-        <div className={taskItemStyles['task__buttons-wrap']}>
-          <button type="button"
-                  className={`${taskItemStyles.task__button} ${taskItemStyles['task__button_type_status']}`}
-                  style={{
-                    backgroundImage: props.isImportant
-                      ? `url(${checkedStar})`
-                      : `url(${defaultStar})`
-                  }}
-                  onClick={() => {
-                    mainStore.tasks.changeTaskStatus(props.id)
-                  }}
+        <div className={taskItemStyles['task__task-options-wrap']}>
+          <input type="checkbox"
+                 className={taskItemStyles['task__importance-checkbox']}
+                 key={generateUniqueId()}
+                 defaultChecked={props.isImportant}
+                 onChange={() => {
+                   mainStore.tasks.changeTaskStatus(props.id)
+                 }}
           />
           <button type="button"
+                  data-testid="edit task"
                   className={`${taskItemStyles.task__button} ${taskItemStyles['task__button_type_edit']}`}
                   onClick={() => {
                     mainStore.popup.setPopupIsOpened(props.id, props.name, props.description, props.isDone, props.isImportant);
                   }}
           />
           <button type="button"
+                  data-testid="delete task"
                   className={`${taskItemStyles.task__button} ${taskItemStyles['task__button_type_delete']}`}
                   onClick={() => {
                     mainStore.tasks.deleteTask(props.id);

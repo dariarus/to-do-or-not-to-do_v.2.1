@@ -43,22 +43,25 @@ describe('Work of inputs in Popup', () => {
     mainStore.popup.openedTask.name = 'Тестовая задача';
     mainStore.popup.openedTask.description = 'Описание тестовой задачи';
     mainStore.popup.openedTask.isDone = false;
-    mainStore.popup.openedTask.isImportant = true;
+    mainStore.popup.openedTask.isImportant = false;
 
     render(<Popup/>)
 
     const taskNameInput = screen.getByPlaceholderText('Задача');
     const taskDescriptionInput = screen.getByPlaceholderText('Описание (опционально)');
-    const isDoneCheckbox = screen.getByLabelText('Важная') as HTMLInputElement;
-    const importanceCheckbox = screen.getByLabelText('Задача выполнена') as HTMLInputElement;
+    const checkboxes = screen.getAllByRole('checkbox') as HTMLInputElement[];
+    const isDoneCheckbox = checkboxes[0];
+    // const isDoneCheckbox = screen.getByLabelText('Задача выполнена') as HTMLInputElement;
+    const importanceCheckbox = screen.getByLabelText('Важная') as HTMLInputElement;
     const saveTaskButton = screen.getByRole('button', {name: 'Сохранить'});
+
 
     // act
     fireEvent.change(taskNameInput, {target: {value: 'Вторая тестовая задача'}});
     fireEvent.change(taskDescriptionInput, {target: {value: 'Описание второй тестовой задачи'}});
     fireEvent.click(isDoneCheckbox);
     fireEvent.click(importanceCheckbox);
-    fireEvent.click(saveTaskButton);
+    fireEvent.click(saveTaskButton)
 
     // assert
     expect(editTaskMock).toHaveBeenCalledTimes(1);
@@ -67,7 +70,7 @@ describe('Work of inputs in Popup', () => {
       'Вторая тестовая задача',
       'Описание второй тестовой задачи',
       true,
-      false
+      true
     );
 
     editTaskMock.mockRestore();
@@ -87,8 +90,8 @@ describe('Work of inputs in Popup', () => {
 
     const taskNameInput = screen.getByPlaceholderText('Задача');
     const taskDescriptionInput = screen.getByPlaceholderText('Описание (опционально)');
-    const isDoneCheckbox = screen.getByLabelText('Важная') as HTMLInputElement;
-    const importanceCheckbox = screen.getByLabelText('Задача выполнена') as HTMLInputElement;
+    const isDoneCheckbox = screen.getByLabelText('Задача выполнена') as HTMLInputElement;
+    const importanceCheckbox = screen.getByLabelText('Важная') as HTMLInputElement;
     const cancelTaskButton = screen.getByRole('button', {name: 'Отменить'});
 
     // act

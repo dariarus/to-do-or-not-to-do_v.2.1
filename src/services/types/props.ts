@@ -33,10 +33,11 @@ export type TTaskInputs = {
   setTaskDescriptionValue: (e: ChangeEvent<HTMLTextAreaElement>) => void,
 }
 
-export type TIsDoneCheckbox = {
+export type TCheckbox = {
   type: 'isDone' | 'isImportant',
   checked: boolean,
   onChange: () => void,
+  key?: string | number;
   labelId?: string,
 }
 

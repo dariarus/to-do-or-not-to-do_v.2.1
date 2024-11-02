@@ -13,7 +13,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
   },
-  base: "/todo-or-not-todo-v2/",
+  base: "/todo-or-not-todo-v2.1/",
   server: {
     host: 'localhost',
     port: 3000

@@ -1,0 +1,21 @@
+.tasks-list-wrap {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.tasks-list {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.tasks-list__stub-text {
+  align-self: center;
+  margin: 20px auto 0;
+  font-family: 'Nunito', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 20px;
+  color: #abb1c1;
+}

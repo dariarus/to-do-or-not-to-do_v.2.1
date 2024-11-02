@@ -4,6 +4,7 @@ import taskInputsStyles from './task-inputs.module.css';
 
 import { TTaskInputs } from '../../services/types/props';
 import { Tooltip } from '../tooltip/tooltip';
+import { generateUniqueId } from "../../utils/functions";
 
 export const TaskInputs: FunctionComponent<TTaskInputs> = (props) => {
   return (
@@ -14,7 +15,7 @@ export const TaskInputs: FunctionComponent<TTaskInputs> = (props) => {
           <input type="checkbox"
                  id="isImportant"
                  disabled={props.isDisabled}
-                 checked={props.isStatusCheckboxChecked}
+                 defaultChecked={props.isStatusCheckboxChecked}
                  className={taskInputsStyles.checkbox}
                  onChange={props.setTaskStatus}
           />

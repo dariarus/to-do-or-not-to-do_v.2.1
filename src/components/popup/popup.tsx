@@ -89,7 +89,7 @@ export const Popup: FunctionComponent = observer(() => {
               <div className={popupStyles['popup__checkboxes-wrap']}>
                 <div className={popupStyles['popup__checkbox-wrap']}>
                   <Checkbox
-                    labelId="isDone"
+                    labelId="popupIsDone"
                     type="isDone"
                     checked={inputsValues.isDone}
                     onChange={() => {
@@ -98,12 +98,12 @@ export const Popup: FunctionComponent = observer(() => {
                         isDone: !inputsValues.isDone
                       })
                     }}/>
-                  <label htmlFor="isDone" className={popupStyles['popup__checkbox-label']}>Задача
+                  <label htmlFor="popupIsDone" className={popupStyles['popup__checkbox-label']}>Задача
                     выполнена</label>
                 </div>
                 <div className={popupStyles['popup__checkbox-wrap']}>
                   <Checkbox
-                    labelId="isImportant"
+                    labelId="popupIsImportant"
                     type="isImportant"
                     checked={inputsValues.isImportant}
                     onChange={() => {
@@ -112,7 +112,7 @@ export const Popup: FunctionComponent = observer(() => {
                         isImportant: !inputsValues.isImportant
                       })
                     }}/>
-                  <label htmlFor="isImportant" className={popupStyles['popup__checkbox-label']}>Важная</label>
+                  <label htmlFor="popupIsImportant" className={popupStyles['popup__checkbox-label']}>Важная</label>
                 </div>
               </div>
               <div className={popupStyles['popup__buttons-wrap']}>

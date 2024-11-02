@@ -55,25 +55,3 @@
 .radio-button-wrap__settings-button:hover {
   background: url(../../images/settings-green.svg) center center no-repeat;
 }
-
-.todos-board__tasks-list-wrap {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.todos-board__tasks-list {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.stub-text {
-  align-self: center;
-  margin: 20px auto 0;
-  font-family: 'Nunito', 'Arial', sans-serif;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 20px;
-  color: #abb1c1;
-}
