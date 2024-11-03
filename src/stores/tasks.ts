@@ -17,6 +17,24 @@ export class Tasks {
     )
   }
 
+  _setCompletionTaskFilterCondition(task: TTask) {
+    switch (this.taskCompletionFilterValue) {
+      case TaskCompletion.ALL:
+        return true;
+      case TaskCompletion.UNDONE:
+        return !task.isDone;
+      case TaskCompletion.DONE:
+        return task.isDone;
+    }
+  }
+
+  _setSearchTaskCondition(task: TTask) {
+    if (!this.taskNameFilterValue) {
+      return true;
+    }
+    return task.name.toLowerCase().includes(this.taskNameFilterValue) || task.description?.toLowerCase().includes(this.taskNameFilterValue)
+  }
+
   setFullTasksArray(refreshedTasksArray: TTask[]) {
     this.fullTasksArray = refreshedTasksArray;
   }
@@ -29,31 +47,13 @@ export class Tasks {
     this.taskCompletionFilterValue = value;
   }
 
-  setCompletionTaskFilterCondition(task: TTask) {
-    switch (this.taskCompletionFilterValue) {
-      case TaskCompletion.ALL:
-        return true;
-      case TaskCompletion.UNDONE:
-        return !task.isDone;
-      case TaskCompletion.DONE:
-        return task.isDone;
-    }
-  }
-
   setTaskNameFilterValue(value: string) {
     this.taskNameFilterValue = value;
   }
 
-  setSearchTaskCondition(task: TTask) {
-    if (!this.taskNameFilterValue) {
-      return true;
-    }
-    return task.name.toLowerCase().includes(this.taskNameFilterValue) || task.description?.toLowerCase().includes(this.taskNameFilterValue)
-  }
-
   setShowingTasksArray() {
     this.showingTasksArray = this.fullTasksArray
-      .filter((task) => this.setCompletionTaskFilterCondition(task) && this.setSearchTaskCondition(task))
+      .filter((task) => this._setCompletionTaskFilterCondition(task) && this._setSearchTaskCondition(task))
   }
 
   changeTaskStatus(taskId: string) {

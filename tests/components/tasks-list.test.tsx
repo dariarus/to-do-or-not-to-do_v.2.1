@@ -4,30 +4,40 @@ import { describe, it, expect, vi } from 'vitest';
 
 import { TasksList } from "../../src/components/tasks-list/tasks-list";
 import mainStore from "../../src/stores";
+import { runInAction } from "mobx";
 
 describe('Work of TasksList', () => {
+  afterAll(() => {
+    runInAction(() => {
+      mainStore.tasks.fullTasksArray = [];
+      mainStore.tasks.showingTasksArray = [];
+    })
+  });
+
   it('should render a tasks list', () => {
     const taskCreationDate = new Date();
-    mainStore.tasks.showingTasksArray = [
-      {
-        id: '1',
-        name: 'Тестовая задача-1',
-        description: 'Описание тестовой задачи-1',
-        isImportant: true,
-        isDone: false,
-        createDate: taskCreationDate,
-        closeDate: null,
-      },
-      {
-        id: '2',
-        name: 'Тестовая задача-2',
-        description: 'Описание тестовой задачи-2',
-        isImportant: false,
-        isDone: true,
-        createDate: taskCreationDate,
-        closeDate: taskCreationDate,
-      },
-    ]
+    runInAction(() => {
+      mainStore.tasks.showingTasksArray = [
+        {
+          id: '1',
+          name: 'Тестовая задача-1',
+          description: 'Описание тестовой задачи-1',
+          isImportant: true,
+          isDone: false,
+          createDate: taskCreationDate,
+          closeDate: null,
+        },
+        {
+          id: '2',
+          name: 'Тестовая задача-2',
+          description: 'Описание тестовой задачи-2',
+          isImportant: false,
+          isDone: true,
+          createDate: taskCreationDate,
+          closeDate: taskCreationDate,
+        },
+      ]
+    });
 
     render(<TasksList/>);
 
@@ -47,17 +57,19 @@ describe('Work of TasksList', () => {
 
   it('should change tasks array after click on checkbox', () => {
     const taskCreationDate = new Date();
-    mainStore.tasks.showingTasksArray = [
-      {
-        id: '1',
-        name: 'Тестовая задача-1',
-        description: 'Описание тестовой задачи-1',
-        isImportant: true,
-        isDone: false,
-        createDate: taskCreationDate,
-        closeDate: null,
-      },
-    ]
+    runInAction(() => {
+      mainStore.tasks.showingTasksArray = [
+        {
+          id: '1',
+          name: 'Тестовая задача-1',
+          description: 'Описание тестовой задачи-1',
+          isImportant: true,
+          isDone: false,
+          createDate: taskCreationDate,
+          closeDate: null,
+        },
+      ]
+    })
 
     render(<TasksList/>)
 
@@ -76,19 +88,20 @@ describe('Work of TasksList', () => {
 
   it('should add task after triggering add task function', async () => {
     const taskCreationDate = new Date();
-    mainStore.tasks.fullTasksArray = [
-      {
-        id: '1',
-        name: 'Тестовая задача-1',
-        description: 'Описание тестовой задачи-1',
-        isImportant: true,
-        isDone: false,
-        createDate: taskCreationDate,
-        closeDate: null,
-      },
-    ];
-
-    mainStore.tasks.showingTasksArray = mainStore.tasks.fullTasksArray;
+    runInAction(() => {
+      mainStore.tasks.fullTasksArray = [
+        {
+          id: '1',
+          name: 'Тестовая задача-1',
+          description: 'Описание тестовой задачи-1',
+          isImportant: true,
+          isDone: false,
+          createDate: taskCreationDate,
+          closeDate: null,
+        },
+      ];
+      mainStore.tasks.showingTasksArray = mainStore.tasks.fullTasksArray;
+    });
 
     const newTaskMock = {
       id: '2',
@@ -117,28 +130,29 @@ describe('Work of TasksList', () => {
     const deleteTaskMock = vi.spyOn(mainStore.tasks, 'deleteTask');
 
     const taskCreationDate = new Date();
-    mainStore.tasks.fullTasksArray = [
-      {
-        id: '1',
-        name: 'Тестовая задача-1',
-        description: 'Описание тестовой задачи-1',
-        isImportant: true,
-        isDone: false,
-        createDate: taskCreationDate,
-        closeDate: null,
-      },
-      {
-        id: '2',
-        name: 'Тестовая задача-2',
-        description: 'Описание тестовой задачи-2',
-        isImportant: false,
-        isDone: true,
-        createDate: taskCreationDate,
-        closeDate: taskCreationDate,
-      },
-    ];
-
-    mainStore.tasks.showingTasksArray = mainStore.tasks.fullTasksArray;
+    runInAction(() =>{
+      mainStore.tasks.fullTasksArray = [
+        {
+          id: '1',
+          name: 'Тестовая задача-1',
+          description: 'Описание тестовой задачи-1',
+          isImportant: true,
+          isDone: false,
+          createDate: taskCreationDate,
+          closeDate: null,
+        },
+        {
+          id: '2',
+          name: 'Тестовая задача-2',
+          description: 'Описание тестовой задачи-2',
+          isImportant: false,
+          isDone: true,
+          createDate: taskCreationDate,
+          closeDate: taskCreationDate,
+        },
+      ];
+      mainStore.tasks.showingTasksArray = mainStore.tasks.fullTasksArray;
+    });
 
     render(<TasksList/>);
 
@@ -157,17 +171,19 @@ describe('Work of TasksList', () => {
     const onOpenPopupMock = vi.spyOn(mainStore.popup, 'setPopupIsOpened');
 
     const taskCreationDate = new Date();
-    mainStore.tasks.fullTasksArray = [
-      {
-        id: '1',
-        name: 'Тестовая задача-1',
-        description: 'Описание тестовой задачи-1',
-        isImportant: true,
-        isDone: false,
-        createDate: taskCreationDate,
-        closeDate: null,
-      },
-    ];
+    runInAction(() => {
+      mainStore.tasks.fullTasksArray = [
+        {
+          id: '1',
+          name: 'Тестовая задача-1',
+          description: 'Описание тестовой задачи-1',
+          isImportant: true,
+          isDone: false,
+          createDate: taskCreationDate,
+          closeDate: null,
+        },
+      ];
+    });
 
     render(<TasksList/>);
 

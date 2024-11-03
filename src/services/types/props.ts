@@ -37,7 +37,6 @@ export type TCheckbox = {
   type: 'isDone' | 'isImportant',
   checked: boolean,
   onChange: () => void,
-  key?: string | number;
   labelId?: string,
 }
 
