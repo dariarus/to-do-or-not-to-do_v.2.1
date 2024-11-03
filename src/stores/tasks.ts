@@ -1,7 +1,7 @@
-import {autorun, IObservableArray, makeAutoObservable, observable, reaction} from 'mobx';
-import {TTask} from '../services/types/props';
-import {TaskCompletion} from '../services/types/state';
-import {loadTasksFromLocalStorage} from '../utils/functions';
+import { autorun, makeAutoObservable } from 'mobx';
+import { TTask } from '../services/types/props';
+import { TaskCompletion } from '../services/types/state';
+import { loadTasksFromLocalStorage } from '../utils/functions';
 
 export class Tasks {
   fullTasksArray: TTask[] = loadTasksFromLocalStorage();
@@ -112,5 +112,12 @@ export class Tasks {
       }
     }
     this.setShowingTasksArray();
+  }
+
+  clearAll() {
+    this.fullTasksArray = [];
+    this.showingTasksArray = [];
+    this.taskNameFilterValue = '';
+    this.taskCompletionFilterValue = TaskCompletion.ALL;
   }
 }

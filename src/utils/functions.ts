@@ -17,5 +17,21 @@ export const loadTasksFromLocalStorage = (): TTask[] => {
     }
   })
   return savedArray;
-}
+};
+
+export const getAllMethods = (obj: any): string[] => {
+  const methods: string[] = [];
+
+  let currentObj = obj;
+  do {
+    Object.getOwnPropertyNames(currentObj).forEach((key) => {
+      if (typeof obj[key] === "function" && !methods.includes(key)) {
+        methods.push(key);
+      }
+    });
+    currentObj = Object.getPrototypeOf(currentObj);
+  } while (currentObj && currentObj !== Object.prototype);
+
+  return methods;
+};
 

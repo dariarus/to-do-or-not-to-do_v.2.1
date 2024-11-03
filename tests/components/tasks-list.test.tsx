@@ -9,8 +9,7 @@ import { runInAction } from "mobx";
 describe('Work of TasksList', () => {
   afterAll(() => {
     runInAction(() => {
-      mainStore.tasks.fullTasksArray = [];
-      mainStore.tasks.showingTasksArray = [];
+      mainStore.tasks.clearAll();
     })
   });
 

@@ -1,3 +1,5 @@
+import { Tasks } from "../../stores/tasks";
+
 export interface IRadioButtonsState {
   allIsChecked: boolean,
   undoneIsChecked: boolean,
