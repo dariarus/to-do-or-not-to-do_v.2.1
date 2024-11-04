@@ -2,6 +2,7 @@ import {makeAutoObservable} from 'mobx';
 import {TTask} from '../services/types/props';
 
 export class Popup {
+  isOpened: boolean = false;
   openedTask: TTask = {
     id: '',
     name: '',
@@ -9,7 +10,6 @@ export class Popup {
     isDone: false,
     isImportant: false,
   };
-  isOpened: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
