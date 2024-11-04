@@ -6,7 +6,7 @@ import { Tasks } from './tasks';
 export class SortingOptions {
   sortOrder: SortingParameters = SortingParameters.ALL;
   sortByField: SortingTasksFieldParameter = SortingTasksFieldParameter.NONE;
-  tasksState: Tasks;
+  tasksState: Tasks | undefined = undefined;
 
   constructor(tasksState: Tasks) {
     this.tasksState = tasksState;
@@ -14,7 +14,7 @@ export class SortingOptions {
 
     reaction(
       () =>
-        observable.array(this.tasksState.showingTasksArray),
+        observable.array(this.tasksState?.showingTasksArray),
       (showingTasksArrayProxy) => {
         switch (this.sortByField) {
           case SortingTasksFieldParameter.NONE:
@@ -29,13 +29,13 @@ export class SortingOptions {
             this.sortByDate(showingTasksArrayProxy, this.sortOrder);
             break;
         }
-        const showingTasksArrayObservable = this.tasksState.showingTasksArray as IObservableArray<TTask>
+        const showingTasksArrayObservable = this.tasksState?.showingTasksArray as IObservableArray<TTask>
         return showingTasksArrayObservable.replace(showingTasksArrayProxy);
       }
     );
   }
 
-  sort<T>(a: T, b: T) {
+  _sort<T>(a: T, b: T) {
     if (a > b) {
       return 1;
     } else if (a < b) {
@@ -51,9 +51,9 @@ export class SortingOptions {
       case SortingParameters.ALL:
         return sortingArray;
       case SortingParameters.ASCENDING:
-        return sortingArray.sort((a, b) => this.sort(a.name?.toUpperCase(), b.name?.toUpperCase()));
+        return sortingArray.sort((a, b) => this._sort(a.name?.toUpperCase(), b.name?.toUpperCase()));
       case SortingParameters.DESCENDING:
-        return sortingArray.sort((a, b) => this.sort(b.name?.toUpperCase(), a.name?.toUpperCase()));
+        return sortingArray.sort((a, b) => this._sort(b.name?.toUpperCase(), a.name?.toUpperCase()));
     }
   }
 
@@ -64,9 +64,9 @@ export class SortingOptions {
       case SortingParameters.ALL:
         return sortingArray;
       case SortingParameters.ASCENDING:
-        return sortingArray.sort((a, b) => this.sort(b.isImportant, a.isImportant));
+        return sortingArray.sort((a, b) => this._sort(b.isImportant, a.isImportant));
       case SortingParameters.DESCENDING:
-        return sortingArray.sort((a, b) => this.sort(a.isImportant, b.isImportant));
+        return sortingArray.sort((a, b) => this._sort(a.isImportant, b.isImportant));
     }
   }
 
@@ -78,12 +78,18 @@ export class SortingOptions {
         return sortingArray;
       case SortingParameters.ASCENDING:
         return sortingArray.sort((a, b) => a.closeDate && b.closeDate
-          ? this.sort(b.closeDate, a.closeDate)
-          : this.sort(b.createDate, a.createDate));
+          ? this._sort(b.closeDate, a.closeDate)
+          : this._sort(b.createDate, a.createDate));
       case SortingParameters.DESCENDING:
         return sortingArray.sort((a, b) => a.closeDate && b.closeDate
-          ? this.sort(a.closeDate, b.closeDate)
-          : this.sort(a.createDate, b.createDate));
+          ? this._sort(a.closeDate, b.closeDate)
+          : this._sort(a.createDate, b.createDate));
     }
+  }
+
+  reset() {
+    this.sortOrder = SortingParameters.ALL;
+    this.sortByField = SortingTasksFieldParameter.NONE;
+    this.tasksState = undefined;
   }
 }
