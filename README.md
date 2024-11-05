@@ -73,12 +73,12 @@
 
 1). Клонировать репозиторий :
 ```
-git clone git@github.com:dariarus/to-do-or-not-to-do_v.2.1.git
+git clone git@github.com:dariarus/todo-or-not-todo-v2.1.git
 ```
 
 2). Перейти в папку с проектом:
 ```shell
-cd todo-or-not-todo_v.2.1
+cd todo-or-not-todo-v2.1
 ```
 
 3). Запустить приложение:
