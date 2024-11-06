@@ -94,7 +94,7 @@ http://localhost:3000/todo-or-not-todo-v2.1/
 [ToDo-2.1](https://dariarus.github.io/todo-or-not-todo-v2.1/)
 
 #### Предыдущие версии приложения:
-1. Первая версия:
+1. Базовая версия:
 
 [Посмотреть репозиторий](https://github.com/dariarus/todo-or-not-todo)
 
